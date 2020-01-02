@@ -7,11 +7,17 @@ import { RegisterComponent } from './register/register.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RecaptchaModule } from 'angular-google-recaptcha';
 import { LoginComponent } from './login/login.component';
+import { VendorDashboardComponent } from './vendor-dashboard/vendor-dashboard.component';
+import { VendorNavbarComponent } from './vendor-navbar/vendor-navbar.component';
+import { AddProductComponent } from './add-product/add-product.component';
 @NgModule({
   declarations: [
     AppComponent,
     RegisterComponent,
-    LoginComponent
+    LoginComponent,
+    VendorDashboardComponent,
+    VendorNavbarComponent,
+    AddProductComponent
   ],
   imports: [
     BrowserModule,

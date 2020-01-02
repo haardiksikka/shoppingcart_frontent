@@ -1,0 +1,77 @@
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+<app-vendor-navbar></app-vendor-navbar>
+
+<form [formGroup]="addProductForm" style="padding:20px" (ngSubmit)="onSubmit()" class="form-horizontal">
+    <div style="padding:20px" class="panel panel-primary">
+        <div class="panel-heading">
+            <h3 class="panel-title">Add Product</h3>
+        </div>
+        <div class="panel-body">
+            <div class="form-group" [ngClass]="{'has-error': ((addProductForm.get('name').touched ||
+                        addProductForm.get('name').dirty) &&
+                             addProductForm.get('name').errors)}">
+                <label class="control-label" for="name">Product Name</label>
+                <input type="text" formControlName="name" class="form-control" />
+                <span class="help-block" *ngIf="((addProductForm.get('name').touched ||
+                                addProductForm.get('name').dirty) &&
+                                addProductForm.get('name').errors)">
+                    <span *ngIf="addProductForm.get('name').errors.required">
+                        Product Name is required
+                    </span>
+
+                </span>
+            </div>
+            <div class="form-group" [ngClass]="{'has-error': ((addProductForm.get('price').touched ||
+                        addProductForm.get('price').dirty) &&
+                        addProductForm.get('price').errors)}">
+                <label class="control-label" for="price">Price</label>
+
+                <input type="text" formControlName="price" class="form-control" />
+
+                <span class="help-block" *ngIf="((addProductForm.get('price').touched ||
+                                addProductForm.get('price').dirty) &&
+                                addProductForm.get('price').errors)">
+                    <span *ngIf="addProductForm.get('price').errors.required">
+                        price is required
+                    </span>
+                    <span *ngIf="addProductForm.get('price').errors.pattern">
+                        Price must have numerics
+                    </span>
+                </span>
+
+            </div>
+            <div class="form-group" [ngClass]="{'has-error': ((addProductForm.get('quantity').touched ||
+     addProductForm.get('quantity').dirty) &&
+         addProductForm.get('quantity').errors)}">
+                <label class="control-label" for="quantity">quantity</label>
+                <input type="text" formControlName="quantity" class="form-control" />
+                <span class="help-block" *ngIf="((addProductForm.get('quantity').touched ||
+                addProductForm.get('quantity').dirty) &&
+                addProductForm.get('quantity').errors)">
+                    <span *ngIf="addProductForm.get('quantity').errors.required">
+                        Quantity is required
+                    </span>
+                    <span *ngIf="addProductForm.get('quantity').errors.pattern">
+                        Quantity must have 10 digits
+                    </span>
+                </span>
+            </div>
+            
+            
+            <div class="form-group" [ngClass]="{'has-error': ((addProductForm.get('category').touched ||
+            addProductForm.get('category').dirty) &&
+            addProductForm.get('category').errors)}">
+                <label for="category">Category:</label>
+                <select class="form-control" formControlName="category">
+                    <option *ngFor="let category of categories" [value]="category.id">{{category.name}}</option>                 
+                </select>
+              </div>
+            
+            <div class="form-group">
+                <button [disabled]='!addProductForm.valid' type="submit" class="btn btn-primary">Add Product</button>
+
+                <a [routerLink]="['/vendor']" class="btn btn-link">Cancel</a>
+            </div>
+        </div>
+    </div>
+</form>

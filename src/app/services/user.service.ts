@@ -16,7 +16,9 @@ export class UserService {
     
   }
  
- 
+ login(user){
+   return this.http.post(this.apiUrl+'/login',user)
+ }
   
    register(user) {   
       const formData: FormData= new FormData();
