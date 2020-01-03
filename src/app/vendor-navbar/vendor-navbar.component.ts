@@ -13,6 +13,7 @@ export class VendorNavbarComponent implements OnInit {
   ngOnInit() {
   }
   logout(){
+    localStorage.removeItem('user');
     this.router.navigate(['login']);
   }
 

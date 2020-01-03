@@ -39,12 +39,10 @@ export class AddProductComponent implements OnInit {
       )
   }
   onSubmit(){
-    alert("clicked")
     if(this.addProductForm.invalid){
       alert("Invalid form values")
     }
     else{
-
       this.productService.addProduct(this.addProductForm.value)
       .subscribe(data => {
         alert("success")

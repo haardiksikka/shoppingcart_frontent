@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AuthenticationService } from '../services/authentication.service';
+import { User } from '../model/user';
 
 
 @Component({
@@ -21,7 +22,6 @@ export class LoginComponent implements OnInit {
     private route: ActivatedRoute,
     private router: Router,
     private authentication: AuthenticationService,
-    
     ) 
     {}
 
@@ -107,11 +107,20 @@ onSubmit() {
               //   localStorage.setItem('currentUser', JSON.stringify(this.result));
               //   this.router.navigate(['requestdeclined']);
               // }
-              if(this.result==true){
-                alert("login successful");
+              if(this.result==null){
+                alert("invalid login credentials")
               }
               else{
-                alert("invalid login credentials")
+                localStorage.setItem('user',this.result.id);
+                if(this.result.userType==1){
+                  //redirect to admin dashboard
+                }
+                else if(this.result.userType==2){
+                  this.router.navigate(['vendor']);
+                }
+                else{
+                  //navigate to user dashboard
+                }
               }
             }
              else{
