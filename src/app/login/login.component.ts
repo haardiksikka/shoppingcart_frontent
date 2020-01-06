@@ -118,8 +118,8 @@ onSubmit() {
                 else if(this.result.userType==2){
                   this.router.navigate(['vendor']);
                 }
-                else{
-                  //navigate to user dashboard
+                else if(this.result.userType==3){
+                  this.router.navigate(['user']);
                 }
               }
             }

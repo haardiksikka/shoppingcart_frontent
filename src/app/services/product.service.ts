@@ -24,4 +24,12 @@ export class ProductService {
   getProductByVendorId(id){
       return this.http.get(this.apiUrl+`/getproduct/${id}`);
   }
+
+  getAllProduct(){
+    return this.http.get(this.apiUrl+'/getallproducts');
+  }
+
+  getProductById(id){
+    return this.http.get(this.apiUrl+`/product/${id}`);
+  }
 }
