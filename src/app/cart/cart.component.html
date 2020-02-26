@@ -1,0 +1,25 @@
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+<app-user-navbar></app-user-navbar>
+<div style="margin: 0px 5px" class="panel panel-primary">
+    <div class="panel-heading">
+        <h3 class="panel-title">Cart</h3>
+    </div>
+    <div class="panel-body">
+        <div class="row product text-center" style="margin-top:10px; margin-left:10px">
+            <div class="col-sm-3 text-center" *ngFor='let product of cart'>
+                <img src="/assets/download.png">
+                <div>{{product.productsInCart.name}}</div>
+                <div class="text-success">Price: ₹ {{product.productsInCart.price}}</div>
+                <div class="text-info">
+                    <span style="padding:3px; background-color:gold" (click)="addToCart(product.productsInCart.id)"><i
+                            class="fa fa-plus"></i></span> &nbsp;{{product.productsInCart.count}} &nbsp;<span
+                        style="padding:3px;background-color:gold" (click)="removeFromCart(product.productsInCart.id)"><i
+                            class="fa fa-minus"></i></span>
+                </div>
+            </div>
+        </div>
+        <div>
+            <button class="btn btn-warning" (click)="checkout()">Checkout</button>
+        </div>
+    </div>
+</div>
